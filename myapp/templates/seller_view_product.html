@@ -1,0 +1,52 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+                
+    
+
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+        <div class="container">
+            <div class="row product__filter">
+                {% for i in products %}
+                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="{% static 'img/product/product-1.jpg' %}">
+                            
+                            <!-- <ul class="product__hover"> -->
+                                <li><a href="#"><img src="{{i.product_image.url}}" alt=""></a></li>
+                                <!-- <li><a href="#"><img src="{% static 'img/icon/compare.png' %}" alt="">
+                                <li><a href="#"><img src="{% static 'img/icon/search.png' %}" alt=""></a></li> -->
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <span>{{i.product_category}}</span>
+                            <a href="{% url 'seller_edit_product' pk=i.pk %}"><input type="button" value="EDIT" class="btn btn-primary"></a>
+                            <a href="{% url 'seller_delete_product' pk=i.pk %}" style="margin-left: 68px;"><input type="button" value="DELETE" class="btn btn-danger"></a>
+                            <h5>Rs.{{i.product_price}}</h5>                        
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- Product Section End -->
+
+   
+  
+</body>
+</html>
+{% endblock %}
